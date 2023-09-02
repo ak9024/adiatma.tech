@@ -8,6 +8,6 @@ adiatma.tech {
   }
 
   handle {
-    reverse_proxy frontend:4173
+    reverse_proxy home:4173
   }
 }
