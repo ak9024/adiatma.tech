@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - adiatma-tech-net
+  home:
+    container_name: home
+    image: ghcr.io/ak9024/adiatma.tech/home:latest
+    networks:
+      - adiatma-tech-net
+  api:
+    container_name: api
+    image: ghcr.io/ak9024/adiatma.tech/api:latest
+    networks:
+      - adiatma-tech-net
+networks:
+  adiatma-tech-net:
