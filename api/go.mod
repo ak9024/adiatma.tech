@@ -4,6 +4,7 @@ go 1.21.0
 
 require (
 	github.com/gofiber/fiber/v2 v2.49.0
+	github.com/joho/godotenv v1.5.1
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
 )

@@ -4,16 +4,22 @@ import (
 	"log"
 	"os"
 
-	"github.com/ak9024/adiatma.tech/api/internal/app"
+	"github.com/ak9024/adiatma.tech/api/internal/app/server"
+	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use: "api",
+	Use:  "api",
+	Long: "CLI to run web server",
 	Run: func(cmd *cobra.Command, args []string) {
-		app.Router()
+		if errLoadEnv := godotenv.Load(".env"); errLoadEnv != nil {
+			log.Fatal(errLoadEnv)
+			os.Exit(1)
+		}
 
-		if err := app.StartApp(); err != nil {
+		server.Router()
+		if err := server.StartApp(os.Getenv("PORT")); err != nil {
 			log.Fatal(err.Error())
 			os.Exit(1)
 		}
@@ -21,8 +27,9 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
-	if err := rootCmd.Execute(); err != nil {
-		log.Fatal(err.Error())
+	rootCmd.AddCommand(cmdEnv)
+	if errExecCmd := rootCmd.Execute(); errExecCmd != nil {
+		log.Fatal(errExecCmd.Error())
 		os.Exit(1)
 	}
 }
