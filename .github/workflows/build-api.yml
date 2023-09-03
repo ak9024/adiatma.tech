@@ -32,3 +32,5 @@ jobs:
           context: "{{ defaultContext }}:api"
           tags: ${{ steps.meta.outputs.tags }}
           push: true
+          build-args: |
+            PORT=${{ secrets.PORT }}
