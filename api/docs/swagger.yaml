@@ -1,0 +1,32 @@
+definitions:
+  hadith.Hadith:
+    properties:
+      arab:
+        type: string
+      id:
+        type: string
+      number:
+        type: integer
+    type: object
+info:
+  contact:
+    email: adiatma.mail@gmail.com
+  title: Adiatma Tech API
+  version: v0.1.0
+paths:
+  /hadith/{hadith}:
+    get:
+      parameters:
+      - description: Hadith
+        in: path
+        name: hadith
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/hadith.Hadith'
+            type: array
+swagger: "2.0"

@@ -18,6 +18,11 @@ func New() IHadith {
 	return &hadith{}
 }
 
+// Get Hadith
+// @descriptipn Get Hadith By Author
+// @Param hadith path string true "Hadith"
+// @Router /hadith/{hadith} [get]
+// @Success 200 {object} []Hadith
 func (h *hadith) GetHadith(c *fiber.Ctx) error {
 	hadith := c.Params("hadith")
 	hadiths, errReadHadith := ReadHadith(hadith, "./data/hadith")
