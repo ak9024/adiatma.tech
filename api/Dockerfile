@@ -11,6 +11,8 @@ COPY . .
 
 RUN go run . env
 
+RUN go install github.com/swaggo/swag/cmd/swag@v1.7.8
+RUN swag init
 RUN CGO_ENABLED=0 GOOS=linux go build -o api
 
 FROM alpine:latest
