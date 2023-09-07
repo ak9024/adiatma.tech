@@ -16,10 +16,10 @@ var (
 )
 
 func Router() *fiber.App {
+	app = fiber.New()
+
 	docs.SwaggerInfo.BasePath = os.Getenv("BASE_PATH")
 	docs.SwaggerInfo.Host = os.Getenv("HOST")
-
-	app = fiber.New()
 
 	app.Use(cors.New())
 

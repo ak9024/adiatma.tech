@@ -1,7 +1,12 @@
 FROM golang:alpine AS builder
 
 ARG PORT
+ARG HOST
+ARG BASE_PATH
+
 ENV PORT=${PORT}
+ARG HOST=${HOST}
+ARG BASE_PATH=${BASE_PATH}
 
 WORKDIR /app/api
 
