@@ -20,6 +20,7 @@ func Router() *fiber.App {
 
 	docs.SwaggerInfo.BasePath = os.Getenv("BASE_PATH")
 	docs.SwaggerInfo.Host = os.Getenv("HOST")
+	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 
 	app.Use(cors.New())
 
