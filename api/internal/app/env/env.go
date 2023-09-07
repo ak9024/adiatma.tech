@@ -7,9 +7,13 @@ import (
 
 func GenerateEnv(fileName string) error {
 	port := os.Getenv("PORT")
+	basePath := os.Getenv("BASE_PATH")
+	host := os.Getenv("HOST")
 
 	mapEnv := map[string]interface{}{
-		"PORT": port,
+		"PORT":      port,
+		"BASE_PATH": basePath,
+		"HOST":      host,
 	}
 
 	file, errCreateFile := os.Create(fileName)
