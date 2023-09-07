@@ -33,6 +33,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           push: true
           build-args: |
-            PORT=${{ secrets.PORT }}
-            BASE_PATH=${{ secrets.BASE_PATH }}
-            HOST=${{ secrets.HOST }}
+            PORT=${{ vars.PORT }}
+            BASE_PATH=${{ vars.BASE_PATH }}
+            HOST=${{ vars.HOST }}
