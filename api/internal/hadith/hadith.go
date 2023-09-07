@@ -20,18 +20,18 @@ func New() IHadith {
 
 func (h *hadith) GetHadith(c *fiber.Ctx) error {
 	hadith := c.Params("hadith")
-	hadiths, errReadHadith := readHadith(hadith)
+	hadiths, errReadHadith := ReadHadith(hadith, "./data/hadith")
 	if errReadHadith != nil {
-		return c.SendStatus(fiber.StatusInternalServerError)
+		return c.SendString(errReadHadith.Error())
 	}
 
 	return c.Status(fiber.StatusOK).JSON(hadiths)
 }
 
-func readHadith(hadith string) ([]Hadith, error) {
+func ReadHadith(hadith, filePath string) ([]Hadith, error) {
 	var hadiths []Hadith
 
-	getDataHadith := fmt.Sprintf("./data/hadith/%s.json", hadith)
+	getDataHadith := fmt.Sprintf("%s/%s.json", filePath, hadith)
 	fileByte, errReadFile := os.ReadFile(getDataHadith)
 	if errReadFile != nil {
 		return hadiths, errReadFile
