@@ -8,15 +8,27 @@
         "version": "v0.1.0"
     },
     "paths": {
-        "/hadith/{hadith}": {
+        "/hadith/{author}": {
             "get": {
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Hadith",
-                        "name": "hadith",
+                        "description": "author",
+                        "name": "author",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "perPage",
+                        "name": "perPage",
+                        "in": "query"
                     }
                 ],
                 "responses": {

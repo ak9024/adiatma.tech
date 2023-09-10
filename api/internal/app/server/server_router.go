@@ -36,7 +36,7 @@ func Router() *fiber.App {
 	h := hadith.New()
 
 	// GET /hadith/abu-daud
-	app.Get("/hadith/:hadith", h.GetHadith)
+	app.Get("/hadith/:author", h.GetHadith)
 
 	return app
 }

@@ -25,15 +25,27 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/hadith/{hadith}": {
+        "/hadith/{author}": {
             "get": {
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Hadith",
-                        "name": "hadith",
+                        "description": "author",
+                        "name": "author",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "perPage",
+                        "name": "perPage",
+                        "in": "query"
                     }
                 ],
                 "responses": {

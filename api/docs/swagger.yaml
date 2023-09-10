@@ -14,13 +14,21 @@ info:
   title: Adiatma Tech API
   version: v0.1.0
 paths:
-  /hadith/{hadith}:
+  /hadith/{author}:
     get:
       parameters:
-      - description: Hadith
+      - description: author
         in: path
-        name: hadith
+        name: author
         required: true
+        type: string
+      - description: page
+        in: query
+        name: page
+        type: string
+      - description: perPage
+        in: query
+        name: perPage
         type: string
       responses:
         "200":

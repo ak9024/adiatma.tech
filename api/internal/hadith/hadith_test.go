@@ -26,12 +26,29 @@ func TestHadith(t *testing.T) {
 		t.Log(res.Status)
 	})
 
-	t.Run("ReadHadith", func(t *testing.T) {
-		hadiths, errReadHadiths := hadith.ReadHadith("abu-daud", "../../data/hadith")
+	t.Run("ReadFileHadith", func(t *testing.T) {
+		hadiths, errReadHadiths := hadith.ReadFileHadith("abu-daud", "../../data/hadith")
 		if errReadHadiths != nil {
 			assert.NotNil(t, errReadHadiths)
 		}
 		assert.Nil(t, errReadHadiths)
 		assert.NotNil(t, hadiths)
+	})
+
+	t.Run("HadithPagination", func(t *testing.T) {
+		hadiths, errReadHadiths := hadith.ReadFileHadith("abu-daud", "../../data/hadith")
+		if errReadHadiths != nil {
+			assert.NotNil(t, errReadHadiths)
+		}
+		assert.Nil(t, errReadHadiths)
+
+		page := 1    // set page to 1
+		perPage := 5 // set perPage to 5
+
+		hadithPagination, errHadithPagination := hadith.HadithPagination(page, perPage, hadiths)
+		if errHadithPagination != nil {
+			assert.NotNil(t, errHadithPagination)
+		}
+		assert.Nil(t, hadithPagination)
 	})
 }
