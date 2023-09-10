@@ -52,7 +52,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/hadith.Hadith"
+                                "$ref": "#/definitions/hadith.ResponseHadith200Ok"
                             }
                         }
                     }
@@ -61,17 +61,51 @@
         }
     },
     "definitions": {
-        "hadith.Hadith": {
+        "hadith.Data": {
             "type": "object",
             "properties": {
-                "arab": {
-                    "type": "string"
-                },
-                "id": {
+                "arabic": {
                     "type": "string"
                 },
                 "number": {
                     "type": "integer"
+                },
+                "translate": {
+                    "$ref": "#/definitions/hadith.Translate"
+                }
+            }
+        },
+        "hadith.ResponseHadith200Ok": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/hadith.Data"
+                    }
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "per_page": {
+                    "type": "integer"
+                },
+                "status_code": {
+                    "type": "integer"
+                },
+                "total_hadith": {
+                    "type": "integer"
+                }
+            }
+        },
+        "hadith.Translate": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
                 }
             }
         }

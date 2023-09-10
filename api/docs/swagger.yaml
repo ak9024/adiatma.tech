@@ -1,12 +1,34 @@
 definitions:
-  hadith.Hadith:
+  hadith.Data:
     properties:
-      arab:
-        type: string
-      id:
+      arabic:
         type: string
       number:
         type: integer
+      translate:
+        $ref: '#/definitions/hadith.Translate'
+    type: object
+  hadith.ResponseHadith200Ok:
+    properties:
+      author:
+        type: string
+      data:
+        items:
+          $ref: '#/definitions/hadith.Data'
+        type: array
+      page:
+        type: integer
+      per_page:
+        type: integer
+      status_code:
+        type: integer
+      total_hadith:
+        type: integer
+    type: object
+  hadith.Translate:
+    properties:
+      id:
+        type: string
     type: object
 info:
   contact:
@@ -35,7 +57,7 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/hadith.Hadith'
+              $ref: '#/definitions/hadith.ResponseHadith200Ok'
             type: array
   /hadith/list/authors:
     get:
