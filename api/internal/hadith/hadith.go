@@ -50,7 +50,7 @@ func (h *hadith) GetAuthor(c *fiber.Ctx) error {
 // @Param page query string false "page"
 // @Param perPage query string false "perPage"
 // @Router /hadith/{author} [get]
-// @Success 200 {object} []Hadith
+// @Success 200 {object} []ResponseHadith200Ok
 func (h *hadith) GetHadith(c *fiber.Ctx) error {
 	author := c.Params("author")
 
@@ -77,7 +77,7 @@ func (h *hadith) GetHadith(c *fiber.Ctx) error {
 	}
 
 	// read hadith's from ./data/hadith/:author's
-	hadiths, errReadHadith := ReadFileHadith(author, "./data/hadith")
+	hadiths, errReadHadith := ReadFileHadith(author, filePath)
 	if errReadHadith != nil {
 		return c.SendString(errReadHadith.Error())
 	}
@@ -88,7 +88,24 @@ func (h *hadith) GetHadith(c *fiber.Ctx) error {
 		return c.SendString(errHadithPagination.Error())
 	}
 
-	return c.Status(fiber.StatusOK).JSON(hadithPagination)
+	// insert hadithPagination to response
+	var response ResponseHadith200Ok
+	response.Author = author
+	response.Page = defaultPage
+	response.PerPage = defaultPerPage
+	response.TotalHadith = len(hadiths)
+	response.StatusCode = fiber.StatusOK
+	for _, hp := range hadithPagination {
+		response.Data = append(response.Data, Data{
+			Arabic: hp.Arab,
+			Number: hp.Number,
+			Translate: Translate{
+				ID: hp.ID,
+			},
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(response)
 }
 
 // implement pagination to limit data return of hadith's
