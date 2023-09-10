@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -14,11 +15,33 @@ type hadith struct{}
 
 // contract of hadith
 type IHadith interface {
+	GetAuthor(c *fiber.Ctx) error
 	GetHadith(c *fiber.Ctx) error
 }
 
 func New() IHadith {
 	return &hadith{}
+}
+
+var (
+	filePath string = "./data/hadith"
+)
+
+// Get Author of Hadith's
+// @Router /hadith/list/authors [get]
+// @Success 200 {object} []string
+func (h *hadith) GetAuthor(c *fiber.Ctx) error {
+	fileNames, errReadDirHadith := ReadDirHadith(filePath)
+	if errReadDirHadith != nil {
+		return c.SendString(errReadDirHadith.Error())
+	}
+
+	authors, errRemoveExtention := RemoveExtention(fileNames, filePath)
+	if errRemoveExtention != nil {
+		return c.SendString(errRemoveExtention.Error())
+	}
+
+	return c.Status(fiber.StatusOK).JSON(authors)
 }
 
 // Get Hadith API
@@ -84,6 +107,39 @@ func HadithPagination(page, perPage int, hadiths []Hadith) ([]Hadith, error) {
 	}
 
 	return hadiths[start:limit], nil
+}
+
+// handle read directory of ./data/hadith/
+func ReadDirHadith(filePath string) ([]string, error) {
+	var fileNames []string
+
+	pathHadith := fmt.Sprintf("%s/", filePath)
+	files, errReadDir := os.ReadDir(pathHadith)
+	if errReadDir != nil {
+		return fileNames, errReadDir
+	}
+
+	for _, file := range files {
+		fileNames = append(fileNames, file.Name())
+	}
+
+	return fileNames, nil
+}
+
+// handle to remove file extention
+func RemoveExtention(fileNames []string, filePath string) ([]string, error) {
+	var authors []string
+	files, errFiles := ReadDirHadith(filePath)
+	if errFiles != nil {
+		return nil, errFiles
+	}
+
+	for _, file := range files {
+		author := strings.Replace(file, ".json", "", -1)
+		authors = append(authors, author)
+	}
+
+	return authors, nil
 }
 
 // handle read file hadith form path data

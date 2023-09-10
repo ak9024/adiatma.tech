@@ -37,4 +37,13 @@ paths:
             items:
               $ref: '#/definitions/hadith.Hadith'
             type: array
+  /hadith/list/authors:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
 swagger: "2.0"
