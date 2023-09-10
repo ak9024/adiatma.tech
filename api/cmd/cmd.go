@@ -13,11 +13,13 @@ var rootCmd = &cobra.Command{
 	Use:  "api",
 	Long: "CLI to run web server",
 	Run: func(cmd *cobra.Command, args []string) {
+		// load the env from .env
 		if errLoadEnv := godotenv.Load(".env"); errLoadEnv != nil {
 			log.Fatal(errLoadEnv)
 			os.Exit(1)
 		}
 
+		// starting the route
 		server.Router()
 		if err := server.StartApp(os.Getenv("PORT")); err != nil {
 			log.Fatal(err.Error())
@@ -27,6 +29,7 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
+	// add command env CLI to generate env
 	rootCmd.AddCommand(cmdEnv)
 	if errExecCmd := rootCmd.Execute(); errExecCmd != nil {
 		log.Fatal(errExecCmd.Error())

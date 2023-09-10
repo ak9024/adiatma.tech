@@ -13,6 +13,7 @@ var cmdEnv = &cobra.Command{
 	Long: "CLI to generate env",
 	Run: func(cmd *cobra.Command, args []string) {
 		fileName := ".env"
+		// generate file .env base on os environment
 		errGenerateEnv := env.GenerateEnv(fileName)
 		if errGenerateEnv != nil {
 			log.Fatal(errGenerateEnv.Error())
