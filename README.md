@@ -30,6 +30,8 @@ Visit in `https://adiatma.tech/api/`
 | ----------------------------------------------- | ----------- |
 | <base_path>/api/metrics                         |             |
 | <base_path>/api/hadith/:author?page=1&perPage=5 |             |
+| <base_path>/api/list/authors                    |             |
+| <base_path>/api/swagger/index.html              |             |
 
 ### Home
 
