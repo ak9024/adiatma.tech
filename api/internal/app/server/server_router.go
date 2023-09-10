@@ -31,12 +31,16 @@ func Router() *fiber.App {
 	// GET /metrics
 	app.Get("/metrics", monitor.New())
 	// GET /swagger/*
-	app.Get("/swagger/*", swagger.HandlerDefault)
+	app.Get("/swagger/*", swagger.New(swagger.Config{
+		URL: "../swagger/doc.json",
+	}))
 
 	h := hadith.New()
 
-	// GET /hadith/abu-daud
-	app.Get("/hadith/:hadith", h.GetHadith)
+	// GET /hadith/:author
+	app.Get("/hadith/:author", h.GetHadith)
+	// GET /hadith/list/authors
+	app.Get("/hadith/list/authors", h.GetAuthor)
 
 	return app
 }

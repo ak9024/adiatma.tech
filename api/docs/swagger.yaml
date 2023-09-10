@@ -14,13 +14,21 @@ info:
   title: Adiatma Tech API
   version: v0.1.0
 paths:
-  /hadith/{hadith}:
+  /hadith/{author}:
     get:
       parameters:
-      - description: Hadith
+      - description: author
         in: path
-        name: hadith
+        name: author
         required: true
+        type: string
+      - description: page
+        in: query
+        name: page
+        type: string
+      - description: perPage
+        in: query
+        name: perPage
         type: string
       responses:
         "200":
@@ -28,5 +36,14 @@ paths:
           schema:
             items:
               $ref: '#/definitions/hadith.Hadith'
+            type: array
+  /hadith/list/authors:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
             type: array
 swagger: "2.0"
