@@ -49,6 +49,6 @@ func TestHadith(t *testing.T) {
 		if errHadithPagination != nil {
 			assert.NotNil(t, errHadithPagination)
 		}
-		assert.Nil(t, hadithPagination)
+		assert.NotNil(t, hadithPagination)
 	})
 }
