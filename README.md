@@ -7,11 +7,21 @@
 
 - go v1.21
 - Node
+- Docker
+- Docker Compose
 
 ### Getting Started
 
 ```bash
+# pull docker images from ghcr.io
 docker compose pull
+
+# export env
+export PORT=8000
+export BASE_PATH=/
+export HOST=localhost:8000
+
+# run the container
 docker compose up -d
 ```
 
@@ -39,11 +49,10 @@ Visit in `https://adiatma.tech`
 
 ### License
 
+- ![MIT](./LICENSE)
+
 ### Roadmap
 
 - [x] API Hadith
 - [ ] API Blogs (get data from Notion)
-
-### Contributor
-
-Stil WIP
+- [ ] Revamp Home

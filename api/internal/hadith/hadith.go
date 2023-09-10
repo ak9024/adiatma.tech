@@ -115,7 +115,7 @@ func HadithPagination(page, perPage int, hadiths []Hadith) ([]Hadith, error) {
 
 	// if start data have more than data hadith's set return to nil
 	if start > len(hadiths) {
-		return nil, errors.New("hadith not found!")
+		return nil, errors.New("[ERROR] hadith not found!")
 	}
 
 	// if data limit more than data hadith's set limit with total count of hadith's

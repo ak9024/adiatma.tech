@@ -16,12 +16,15 @@ var (
 )
 
 func Router() *fiber.App {
-	app = fiber.New()
-
+	// generating swagger information
 	docs.SwaggerInfo.BasePath = os.Getenv("BASE_PATH")
 	docs.SwaggerInfo.Host = os.Getenv("HOST")
-	docs.SwaggerInfo.Schemes = []string{"http", "https"}
+	docs.SwaggerInfo.Schemes = []string{"https", "http"}
 
+	// init new fiber app
+	app = fiber.New()
+
+	// enable cors * for all origin
 	app.Use(cors.New())
 
 	app.Get("/", func(c *fiber.Ctx) error {
@@ -35,8 +38,8 @@ func Router() *fiber.App {
 		URL: "../swagger/doc.json",
 	}))
 
+	// init hadith
 	h := hadith.New()
-
 	// GET /hadith/:author
 	app.Get("/hadith/:author", h.GetHadith)
 	// GET /hadith/list/authors
