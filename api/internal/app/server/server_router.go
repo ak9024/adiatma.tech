@@ -31,7 +31,9 @@ func Router() *fiber.App {
 	// GET /metrics
 	app.Get("/metrics", monitor.New())
 	// GET /swagger/*
-	app.Get("/swagger/*", swagger.HandlerDefault)
+	app.Get("/swagger/*", swagger.New(swagger.Config{
+		URL: "../swagger/doc.json",
+	}))
 
 	h := hadith.New()
 
