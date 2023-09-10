@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="./assets/architecture.png" />
     <h2>http://adiatma.tech</h2>
     <small>My personal site</small>
 </div>
@@ -30,7 +31,7 @@ docker compose up -d
 - go
 - Vanilla JS
 - Docker
-- Caddy for HTTPS
+- Caddy for web server
 
 ### API's
 
