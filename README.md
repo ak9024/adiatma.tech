@@ -36,12 +36,12 @@ docker compose up -d
 
 Visit in `https://adiatma.tech/api/`
 
-| Endpoints                                       | Description |
-| ----------------------------------------------- | ----------- |
-| <base_path>/api/metrics                         |             |
-| <base_path>/api/hadith/:author?page=1&perPage=5 |             |
-| <base_path>/api/list/authors                    |             |
-| <base_path>/api/swagger/index.html              |             |
+| Endpoints                            | Description |
+| ------------------------------------ | ----------- |
+| /api/metrics                         |             |
+| /api/hadith/:author?page=1&perPage=5 |             |
+| /api/list/authors                    |             |
+| /api/swagger/index.html              |             |
 
 ### Home
 
@@ -49,10 +49,10 @@ Visit in `https://adiatma.tech`
 
 ### License
 
-- ![MIT](./LICENSE)
+- [MIT](./LICENSE)
 
 ### Roadmap
 
 - [x] API Hadith
-- [ ] API Blogs (get data from Notion)
+- [ ] API Blogs (get data from notion, dev.to)
 - [ ] Revamp Home
