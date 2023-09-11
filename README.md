@@ -63,3 +63,5 @@ Visit in `https://adiatma.tech`
 - [x] API Hadith
 - [ ] API Blogs (get data from notion, dev.to)
 - [ ] Revamp Home
+- [ ] CLI to generate auto change log
+- [ ] Dev `https://playground.adiatma.tech`
