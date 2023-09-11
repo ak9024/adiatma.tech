@@ -4,12 +4,17 @@
     <small>My personal site</small>
 </div>
 
+### Intro
+
+Hello, for learning purpose i build this site.
+
 ### Prerequisite
 
 - go v1.21
 - Node
 - Docker
 - Docker Compose
+- Terraform
 
 ### Getting Started
 
@@ -28,10 +33,11 @@ docker compose up -d
 
 ### Stack
 
-- go
-- Vanilla JS
-- Docker
-- Caddy for web server
+- go to serve API's
+- Vanilla JS as a static site for home
+- Docker for image and container
+- Caddy for web server handle auto HTTPS and reverse proxy
+- Terraform as infrastructure as code to provision linode server's
 
 ### API's
 
