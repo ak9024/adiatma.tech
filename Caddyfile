@@ -4,7 +4,10 @@
 
 adiatma.tech {
   handle_path /api/* {
-    reverse_proxy api:8000
+    reverse_proxy api:8000 {
+      health_path /
+      health_interval 10s
+    }
   }
 
   handle {
