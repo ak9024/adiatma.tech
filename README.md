@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./assets/architecture.png" />
-    <h2>http://adiatma.tech</h2>
+    <h2>https://adiatma.tech</h2>
     <small>My personal site</small>
 </div>
 
