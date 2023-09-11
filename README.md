@@ -33,7 +33,7 @@ docker compose up -d
 
 ### Stack
 
-- go to serve API's
+- Go to serve API's
 - Vanilla JS as a static site for home
 - Docker for image and container
 - Caddy for web server handle auto HTTPS and reverse proxy
@@ -63,5 +63,5 @@ Visit in `https://adiatma.tech`
 - [x] API Hadith
 - [ ] API Blogs (get data from notion, dev.to)
 - [ ] Revamp Home
-- [ ] CLI to generate auto change log
+- [ ] CLI to generate auto change's log
 - [ ] Dev `https://playground.adiatma.tech`
