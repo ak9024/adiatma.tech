@@ -21,7 +21,7 @@ resource "linode_instance" "adiatma-tech" {
   connection {
     type        = "ssh"
     user        = var.ssh_username
-    private_key = file("~/.ssh/id_github")
+    private_key = file(var.ssh_private_key_location)
     host        = self.ip_address
   }
 
