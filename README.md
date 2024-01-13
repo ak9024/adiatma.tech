@@ -6,6 +6,8 @@
 
 ### Intro
 
+> deprecate Caddyfile and replace with cert-manager (TLS) and traefik (Load Balancer)
+
 Hello, for learning purpose i build this site.
 
 ### Prerequisite
