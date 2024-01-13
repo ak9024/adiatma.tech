@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home
+  namespace: adiatma-tech
+  labels:
+    app: home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home
+  template:
+    metadata:
+      labels:
+        app: home
+    spec:
+      containers:
+      - name: home
+        image: ghcr.io/ak9024/adiatma.tech/home:latest
+        ports:
+        - containerPort: 4173
+        resources:
+          requests:
+            cpu: "2m"
+            memory: "4Mi"
+      imagePullSecrets:
+      - name: docker-github-registry

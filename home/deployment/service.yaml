@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: home
+  namespace: adiatma-tech
+spec:
+  selector:
+    app: home
+  ports:
+    - protocol: TCP
+      port: 4173
+      targetPort: 4173
+  type: ClusterIP
