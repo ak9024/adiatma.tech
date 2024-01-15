@@ -32,7 +32,3 @@ jobs:
           context: "{{ defaultContext }}:api"
           tags: ${{ steps.meta.outputs.tags }}
           push: true
-          build-args: |
-            PORT=${{ vars.PORT }}
-            BASE_PATH=${{ vars.BASE_PATH }}
-            HOST=${{ vars.HOST }}
