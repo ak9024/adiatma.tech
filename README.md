@@ -8,13 +8,11 @@
 
 Hello, for learning purpose i build this site.
 
+> Deprecate Caddyfile and replace with cert-manager (TLS) and traefik (Load Balancer)
+
 ### Prerequisite
 
-- go v1.21
-- Node
 - Docker
-- Docker Compose
-- Terraform
 
 ### Getting Started
 
@@ -35,20 +33,17 @@ docker compose up -d
 
 - Go to serve API's
 - Vanilla JS as a static site for home
-- Docker for image and container
-- Caddy for web server handle auto HTTPS and reverse proxy
-- Terraform as infrastructure as code to provision linode server's
 
 ### API's
 
-Visit in `https://adiatma.tech/api/`
+Visit in `https://api.adiatma.tech/`
 
 | Endpoints                            | Description |
 | ------------------------------------ | ----------- |
-| /api/metrics                         |             |
-| /api/hadith/:author?page=1&perPage=5 |             |
-| /api/list/authors                    |             |
-| /api/swagger/index.html              |             |
+| /metrics                         |             |
+| /hadith/:author?page=1&perPage=5 |             |
+| /list/authors                    |             |
+| /swagger/index.html              |             |
 
 ### Home
 
